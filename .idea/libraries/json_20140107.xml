@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="json-20140107">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/json-20140107.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/gson-2.8.8.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/json-simple-1.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/json-20210307.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/codegen/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/codegen/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/examples/android-proguard-example/src" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/extras/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/extras/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/gson/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/gson/src/main/java-templates" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/gson/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/metrics/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/proto/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/gson-master/gson-master/proto/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

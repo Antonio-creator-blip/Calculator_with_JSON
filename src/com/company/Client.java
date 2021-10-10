@@ -69,6 +69,21 @@ public class Client {
                         ch = operation.toCharArray();
                     }
                 }
+                int digit=0;
+                int op=0;
+                for(int i=0; i<operation.length(); i++) {
+                    if(Character.isDigit(operation.charAt(i))) {
+                        digit++;
+                    }else{
+                        op = i;
+                    }
+                }
+                while((op+1) == operation.length()){
+                    System.out.println("Errore di sintassi. Inserire un'altra cifra per eseguire l'operazione");
+                    System.out.println("Inserisci di nuovo l'operazione : " );
+                    operation = tastiera.readLine();
+                    ch = operation.toCharArray();
+                }
 
                 JSONObject obj = new JSONObject();
                 obj.put("Espressione", operation);

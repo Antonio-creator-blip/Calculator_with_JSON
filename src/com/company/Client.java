@@ -54,7 +54,7 @@ public class Client {
 
                 char[] ch = operation.toCharArray();
                 while(ch[0] == '+' || ch[0] == '-' || ch[0] == '*' || ch[0] == '/') {
-                    System.out.println("Errore di sintassi. Hai inserito un operatore prima di un numero");
+                    System.out.println("Errore di sintassi.");
                     System.out.println("Inserisci di nuovo l'operazione : " );
                     operation = tastiera.readLine();
                     ch = operation.toCharArray();
@@ -63,7 +63,7 @@ public class Client {
                 int numero = operation.length(), operatore = operation.length();
                 for(int  i=0; i< operation.length();i++) {
                     while(ch[i] == ',') {
-                        System.out.println("Errore di sintassi. Inserire un . (punto) invece della  , (virgola) ");
+                        System.out.println("Errore di sintassi.");
                         System.out.println("Inserisci di nuovo l'operazione : " );
                         operation = tastiera.readLine();
                         ch = operation.toCharArray();
@@ -78,8 +78,8 @@ public class Client {
                         op = i;
                     }
                 }
-                while((op+1) == operation.length()){
-                    System.out.println("Errore di sintassi. Inserire un'altra cifra per eseguire l'operazione");
+                while((op+1) == operation.length() || digit==0){
+                    System.out.println("Errore di sintassi.");
                     System.out.println("Inserisci di nuovo l'operazione : " );
                     operation = tastiera.readLine();
                     ch = operation.toCharArray();
@@ -144,15 +144,12 @@ public class Client {
 			/*while(true) {
 				//System.out.println("4 - inserisci la stringa da trasmetter al server: " );
 				stringaUtente = "123456789" ;
-
 				// la spedisco al server
 				System.out.println("5 - invio la stringa al server e attendo ...");
 				outVersoServer.writeBytes(stringaUtente + '\n');
-
 				// leggo la risposta dal server
 				stringaRicevutaDalServerString = inDalServer.readLine();
 				System.out.println("8 - risposta dal server. Stringa ricevuta: " + stringaRicevutaDalServerString);
-
 				// chiudo la connessione
 				System.out.println("9 - CLIENT: termina elaborazione, mi riposo per 10 secondi");
 				//mioSocket.close();

@@ -60,7 +60,7 @@ public class Client {
                     ch = operation.toCharArray();
 
                 }
-                int numero = operation.length(), operatore = operation.length();
+
                 for(int  i=0; i< operation.length();i++) {
                     while(ch[i] == ',') {
                         System.out.println("Errore di sintassi.");
@@ -78,7 +78,7 @@ public class Client {
                         op = i;
                     }
                 }
-                while((op+1) == operation.length() || digit==0){
+                while((op+1) == operation.length() && digit==operation.length()-1 || digit==0){
                     System.out.println("Errore di sintassi.");
                     System.out.println("Inserisci di nuovo l'operazione : " );
                     operation = tastiera.readLine();
@@ -87,17 +87,17 @@ public class Client {
 
                 JSONObject obj = new JSONObject();
                 obj.put("Espressione", operation);
-                obj.put("Risultato", 0);
+                //obj.put("Risultato", 0);
 
                 //System.out.println(obj.toJSONString());
 
-                try (FileWriter file = new FileWriter("./DIGITS.json")) {
+                /*try (FileWriter file = new FileWriter("./DIGITS.json")) {
                     file.write(obj.toJSONString());
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-
+                }*/
                 outVersoServer.writeBytes(obj.toJSONString()+"\n");
+
                 //outVersoServer.writeBytes(operation + '\n');
 
 				/*int x=0;
@@ -123,11 +123,12 @@ public class Client {
                 //outVersoServer.writeByte(symbol + '\n');
 
                 // leggo la risposta dal server
-                stringaRicevutaDalServerString = inDalServer.readLine();
-                String nomeFile = "C:/Users/Win 10 Pro/IdeaProjects/Calculator_with_JSON/DIGITS.json";
-                FileReader reader = new FileReader(nomeFile);
+                String info = inDalServer.readLine();
+
+                //String nomeFile = "C:/Users/Win 10 Pro/IdeaProjects/Calculator_with_JSON/DIGITS.json";
+                //FileReader reader = new FileReader(nomeFile);
                 JSONParser parserJSON = new JSONParser();
-                JSONObject oggettoJSON = (JSONObject) parserJSON.parse(reader);
+                JSONObject oggettoJSON = (JSONObject) parserJSON.parse(info);
 
                 String risultato = (String) oggettoJSON.get("Risultato");
 

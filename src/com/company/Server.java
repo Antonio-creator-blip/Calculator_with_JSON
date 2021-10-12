@@ -57,15 +57,12 @@ public class Server {
                 System.out.println("Connesso");
                 espressione = inDalClient.readLine();
 
-                String nomeFile = "C:/Users/Win 10 Pro/IdeaProjects/Calculator_with_JSON/DIGITS.json";
-                FileReader reader = new FileReader(nomeFile);
+                //String nomeFile = "C:/Users/Win 10 Pro/IdeaProjects/Calculator_with_JSON/DIGITS.json";
+                //FileReader reader = new FileReader(nomeFile);
                 JSONParser parserJSON = new JSONParser();
-                JSONObject oggettoJSON = (JSONObject) parserJSON.parse(reader);
+                JSONObject oggettoJSON = (JSONObject) parserJSON.parse(espressione);
 
                 String operation = (String) oggettoJSON.get("Espressione");
-                System.out.println(operation);
-
-
 
                 System.out.println("Operazione da eseguire : "+ operation);
                 char symbol = 0;
@@ -75,13 +72,15 @@ public class Server {
                 String first_number = null, second_number = null;
                 char[] ch = new char[operation.length()];
                 for(int i=0; i<operation.length(); i++) {
-                    if(Character.isDigit(operation.charAt(i))) {
+                    if(Character.isDigit(operation.charAt(i)) || operation.charAt(i) == '.') {
                         digit++;
                     }
                 }
                 if ( operation.length()==digit ) {
-                    System.out.println("Risultato finale : " + operation);
-                    outVersoClient.writeBytes(operation+'\n');
+                    //System.out.println("Risultato finale : " + operation);
+                    JSONObject objResult = new JSONObject();
+                    objResult.put("Risultato", operation);
+                    outVersoClient.writeBytes(objResult.toJSONString()+"\n");
                 }
                 else {
 
@@ -144,17 +143,19 @@ public class Server {
                             break;
                         }
                     }
-                }
+                    String resultString = Float.toString(result);
 
-                String resultString = Float.toString(result);
-
-                oggettoJSON.put("Risultato", resultString);
-                try (FileWriter file = new FileWriter("./DIGITS.json")) {
+                    JSONObject objResult = new JSONObject();
+                    objResult.put("Risultato", resultString);
+                /*try (FileWriter file = new FileWriter("./DIGITS.json")) {
                     file.write(oggettoJSON.toJSONString());
                 } catch (IOException e) {
                     e.printStackTrace();
+                }*/
+                    outVersoClient.writeBytes(objResult.toJSONString()+"\n");
                 }
-                outVersoClient.writeBytes(oggettoJSON.toJSONString()+'\n');
+
+
                 result=0;
                 //client.close();
             }
